@@ -1,26 +1,57 @@
+<!-- App.vue -->
+
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <!-- Root element of the App component -->
+  <div>
+     <!-- Header component -->
+    <Header @change-view="changeView" />
+
+    <!-- Main container -->
+    <div class="main-container">
+      <!-- Upload section component -->
+      <UploadSection :currentView="currentView" />
+
+      <!-- Stream section component -->
+      <StreamSection :streamingURL="streamingURL" :currentView="currentView" />
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// Import necessary components
+import Header from './Head.vue';
+import UploadSection from './UploadSection.vue';
+import StreamSection from './StreamSection.vue';
 
+// Define component logic
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    Header,
+    UploadSection,
+    StreamSection,
+  },
+  data() {
+    // Initialize data properties
+    return {
+      currentView: 'upload',// Set initial view
+      streamingURL: '',// Initialize streaming URL
+    };
+  },
+  methods: {
+    // Method to change the current view/page
+    changeView(page) {
+      this.currentView = page;
+    },
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+/* Main container : Stacking vertically and horizontally */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
 </style>
