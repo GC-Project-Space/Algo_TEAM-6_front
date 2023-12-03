@@ -19,9 +19,9 @@
 
 <script>
 // Import necessary components
-import Header from './Head.vue';
-import UploadSection from './UploadSection.vue';
-import StreamSection from './StreamSection.vue';
+import Header from './components/Head.vue';
+import UploadSection from './components/UploadSection.vue';
+import StreamSection from './components/StreamSection.vue';
 
 // Define component logic
 export default {
